@@ -154,7 +154,7 @@ docker push username/my-app:v1
   - easy to configure, create a config folder in resource and add properties files of each services,
   - Mandatory to enable `@EnableConfigServer` in main
   - we can remove the copied information from their respective microservices, ex. application-prod and -qa in accounts service is no longer needed.
-- To validate configs for each services
+  - To validate configs for each services
 ```text
 http://localhost:8071/accounts/prod
 http://localhost:8071/accounts/qa
@@ -162,6 +162,18 @@ http://localhost:8071/cards/prod
 and so on...
 ```
 
+config server should be started, otherwise property binding issue may occur for $`{build.version}` because now they have moved to config server service.
+<br> config server also supports encryption of data, if reading encrypted data from external config, use prefix as `{ciper}then_your_encrypted_code_here`
+
+```yaml
+accounts:
+  email: {cipher}a85404b53fc9070fe004709beed9a42225a9c5782414a599c4a0c9fbe8e0bd43
+```
+
+- **Spring boot Actuator**
+  - We can refresh the environment properties data without restarting running microservices.
+- **Spring Cloud Bus**
+  - `/actuator/busrefresh`: This is similar to `/actuator/refresh endpoint, but when used any one of the microservice same action triggered to every microservices which are connected to SPRING CLOUD BUS
 
 # Annotations Used
 - `@ConfigurationProperties(prefix="account")`
