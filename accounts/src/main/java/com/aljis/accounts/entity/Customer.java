@@ -2,7 +2,6 @@ package com.aljis.accounts.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.GenericGenerator;
 
 @Getter
 @Setter

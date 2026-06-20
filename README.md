@@ -19,10 +19,136 @@ http://locahost:8080/swagger-ui.html
 ```
 
 
-# Docker and Containerization
+# Section 4
+To build a project run below command, which will generate a jar file for deployment. **make sure you dont get any errors why building your project.**
+
+```bash
+mvn clean install
+```
+To run the build you have created in the terminal:
+```bash
+# Run thru Maven
+mvn spring-boot:run
+
+#Or Java
+java -jar target/accounts-0.0.1-SNAPSHOT.jar
+```
+
+## Docker and Containerization
+### 1 Docker Approach
+***Step 1***: Create a docker file
+1. Create a Dockerfile in each service
+2. use base image
+3. copy jar file to that base image
+4. run your spring boot application in container
+   <br>[Here is the example of Dockerfile](accounts/Dockerfile)
+
+***Step 2***: Build docker file
+```bash
+docker build . -t abdulmusavveeralji/accounts:s4
+```
+
+### 2 Build-pack Docker Approach
+### 3 Generate Docker image using google jib (Recommended)
+After adding JIB plugin to your pom.xml file, run below command to build a docker image of this microservice.
+this will create a very lightweight image compare to other 2 approaches, so this one is recommended.
+
+```bash
+# Build Spring Boot image using Jib
+mvn compile jib:dockerBuild
+
+# Build Spring Boot image without storing locally using jib and push directly to remote
+mvn compile jib:build
+```
+
+for `build` command, refer the official document. which explain how to push to different platforms (aws or dockerhub)
+
+<br>
+To push image to docker.io, take help of google!
+
+
+Docker commands
+```bash
+# Inspect an image
+docker image inspect <image_name>
+
+# List images
+docker images
+
+# List running containers
+docker ps
+
+# List all containers (running + stopped)
+docker ps -a
+
+# Remove an image
+docker rmi <image_name>
+
+# Remove a container
+docker rm <container_id>
+
+# Run a container interactively
+docker run -it <image_name>
+
+# Run a container and map ports
+docker run -p 8080:8080 <image_name>
+
+# Docker Compose
+docker compose up
+
+# Docker Compose in detached mode
+docker compose up -d
+
+# Stop and remove containers, networks
+docker compose down
+```
+
+Additional useful commands
+
+```bash
+# View container logs
+docker logs <container_id>
+
+# Follow logs
+docker logs -f <container_id>
+
+# Execute a shell inside a running container
+docker exec -it <container_id> /bin/bash
+
+# Build an image
+docker build -t my-app .
+
+# Pull an image
+docker pull nginx
+
+# Start a container
+docker start <container_id>
+
+# Stop a container
+docker stop <container_id>
+
+# Remove all stopped containers
+docker container prune
+
+# Remove unused images
+docker image prune -a
+
+# Build Spring Boot image using Jib
+mvn compile jib:dockerBuild
+
+# View image layers
+docker history <image_name>
+
+# Tag image
+docker tag my-app:latest username/my-app:v1
+
+# Push image
+docker push username/my-app:v1
+```
+
+
 
 # Annotations Used
 - `@ConfigurationProperties(prefix="account")`
   - This annotation is used to bind data from application.yml file to a record class where data will be final
   - For this annotation to work, we need to enable configuration property by adding `@EnableConfigurationProperties(value={Class_References_where we are actually using ConfigurationProperties})` in Main Class
-  - 
