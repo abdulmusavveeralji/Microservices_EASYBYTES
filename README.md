@@ -6,6 +6,7 @@
   - h2 database will be directly hosted in this endppoint during runtime `/h2-console`
   - Global exception handler supported
   - Audit Aware integrated, for generating audit for each operation.
+- ConfigServer : 8071
 
 ### Account Service Endpoints
 ```text
@@ -148,8 +149,18 @@ docker push username/my-app:v1
 
 
 # Spring Cloud
-- **Spring Cloud Config (Configuration Service/Server)**: This is a centralized configuration service, which holds the credential or configuration service of the microservices
-- 
+- **Spring Cloud Config (Configuration Service/Server)**: 
+  - This is a centralized configuration service, which holds the credential or configuration service of the microservices
+  - easy to configure, create a config folder in resource and add properties files of each services,
+  - Mandatory to enable `@EnableConfigServer` in main
+  - we can remove the copied information from their respective microservices, ex. application-prod and -qa in accounts service is no longer needed.
+- To validate configs for each services
+```text
+http://localhost:8071/accounts/prod
+http://localhost:8071/accounts/qa
+http://localhost:8071/cards/prod
+and so on...
+```
 
 
 # Annotations Used

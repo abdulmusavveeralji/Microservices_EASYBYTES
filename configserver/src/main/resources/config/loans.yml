@@ -1,0 +1,11 @@
+build:
+  version: "3.0"
+
+cards:
+  message: "Welcome to Aljis accounts related local APIs "
+  contactDetails:
+    name: "Abdul Musavveer Alji - Developer"
+    email: "techie.alji@aljis.com"
+  onCallSupport:
+    - (555) 555-1234
+    - (555) 523-1345

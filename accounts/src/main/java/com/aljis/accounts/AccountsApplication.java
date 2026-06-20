@@ -33,7 +33,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 				description =  "Abdul Musavveer Alji's Accounts microservice REST API Documentation",
 				url = "https://www.aljis.com/swagger-ui.html"
 		)
-)public class AccountsApplication {
+)
+public class AccountsApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(AccountsApplication.class, args);
