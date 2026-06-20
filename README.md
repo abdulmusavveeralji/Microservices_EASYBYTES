@@ -147,6 +147,10 @@ docker push username/my-app:v1
 ```
 
 
+# Spring Cloud
+- **Spring Cloud Config (Configuration Service/Server)**: This is a centralized configuration service, which holds the credential or configuration service of the microservices
+- 
+
 
 # Annotations Used
 - `@ConfigurationProperties(prefix="account")`
