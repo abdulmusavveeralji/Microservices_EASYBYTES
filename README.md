@@ -174,6 +174,9 @@ accounts:
   - We can refresh the environment properties data without restarting running microservices.
 - **Spring Cloud Bus**
   - `/actuator/busrefresh`: This is similar to `/actuator/refresh endpoint, but when used any one of the microservice same action triggered to every microservices which are connected to SPRING CLOUD BUS
+- **Spring Cloud Config Monitor**
+  - works when webhook event is triggered, all services then busrefreshed
+  - should be added in configserver
 
 # Annotations Used
 - `@ConfigurationProperties(prefix="account")`
