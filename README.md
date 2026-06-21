@@ -7,6 +7,8 @@
   - Global exception handler supported
   - Audit Aware integrated, for generating audit for each operation.
 - ConfigServer : 8071
+- Eureka Server : 8070
+  - Service registry and discovery, Eureka server will discover all the microservices, and those microservices should have eureka client integrated.
 
 ### Account Service Endpoints
 ```text
@@ -192,3 +194,6 @@ docker run -p 3306:3306 --name accountsdb -e MYSQL_ROOT_PASSWORD="root" -e MYSQL
 docker run -p 3307:3306 --name cardsdb -e MYSQL_ROOT_PASSWORD="root" -e MYSQL_DATABASE="cardsdb" -d mysql
 docker run -p 3308:3306 --name loansdb -e MYSQL_ROOT_PASSWORD="root" -e MYSQL_DATABASE="loansdb" -d mysql
 ```
+
+# Section 8
+- `Eureka Server`
