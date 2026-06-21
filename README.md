@@ -9,6 +9,7 @@
 - ConfigServer : 8071
 - Eureka Server : 8070
   - Service registry and discovery, Eureka server will discover all the microservices, and those microservices should have eureka client integrated.
+  - `http://localhost:8070` this endpoint has information on services that are connected to eureka service
 
 ### Account Service Endpoints
 ```text
@@ -179,6 +180,8 @@ accounts:
 - **Spring Cloud Config Monitor**
   - works when webhook event is triggered, all services then busrefreshed
   - should be added in configserver
+- **Spring Cloud Open Feign**
+  - This is used for internal communications for the services, from account service to cards service and so on... just like a rest api
 
 # Annotations Used
 - `@ConfigurationProperties(prefix="account")`

@@ -7,6 +7,7 @@ SERVICES=(
   "cards"
   "loans"
   "configserver"
+  "eurekaserver"
 )
 
 for service in "${SERVICES[@]}"
