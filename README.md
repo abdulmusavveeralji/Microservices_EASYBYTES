@@ -182,3 +182,13 @@ accounts:
 - `@ConfigurationProperties(prefix="account")`
   - This annotation is used to bind data from application.yml file to a record class where data will be final
   - For this annotation to work, we need to enable configuration property by adding `@EnableConfigurationProperties(value={Class_References_where we are actually using ConfigurationProperties})` in Main Class
+
+# Section 7
+- Add Mysql DB and remove H2.
+  - create a docker image for mysql for each service
+
+```bash
+docker run -p 3306:3306 --name accountsdb -e MYSQL_ROOT_PASSWORD="root" -e MYSQL_DATABASE="accountsdb" -d mysql
+docker run -p 3307:3306 --name cardsdb -e MYSQL_ROOT_PASSWORD="root" -e MYSQL_DATABASE="cardsdb" -d mysql
+docker run -p 3308:3306 --name loansdb -e MYSQL_ROOT_PASSWORD="root" -e MYSQL_DATABASE="loansdb" -d mysql
+```
