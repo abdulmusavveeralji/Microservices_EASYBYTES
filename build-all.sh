@@ -18,7 +18,7 @@ do
 
   cd "$service"
 
-  mvn clean compile jib:build
+  mvn clean compile jib:dockerBuild
 
   cd ..
 done
